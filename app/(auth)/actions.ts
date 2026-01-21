@@ -89,17 +89,11 @@ export async function signup(formData: FormData) {
     // Writing here:
 
     if (data.user) {
-        const { error: profileError } = await supabase.from('profiles').insert({
-            id: data.user.id,
-            email: email,
-            full_name: fullName,
-            role: role
-        })
-
-        if (profileError) {
-            console.error('Error creating profile:', profileError)
-            // detailed error handling...
-        }
+        // We rely on the trigger to create the profile.
+        // However, if the trigger fails or is delayed, we might want to check or retry?
+        // But for simplicity, we assume the trigger works.
+        // If we also insert here, it might conflict if the trigger runs fast.
+        // So we remove the manual insert.
     }
 
     revalidatePath('/', 'layout')

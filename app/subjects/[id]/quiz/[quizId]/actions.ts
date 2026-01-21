@@ -25,9 +25,13 @@ export async function submitQuiz(formData: FormData) {
 
 
     let score = 0
+    const userAnswers: Record<string, string> = {};
 
     questions.forEach(q => {
         const userAnswer = formData.get(q.id) as string
+        if (userAnswer) {
+            userAnswers[q.id] = userAnswer;
+        }
         if (userAnswer === q.correct_answer) {
             score++
         }
@@ -47,5 +51,6 @@ export async function submitQuiz(formData: FormData) {
     }
 
     // Pass results as query params or similar to a results page
-    redirect(`/subjects/results/${quizId}?score=${score}&total=${questions.length}`)
+    const answersParam = encodeURIComponent(JSON.stringify(userAnswers));
+    redirect(`/subjects/results/${quizId}?score=${score}&total=${questions.length}&answers=${answersParam}`)
 }

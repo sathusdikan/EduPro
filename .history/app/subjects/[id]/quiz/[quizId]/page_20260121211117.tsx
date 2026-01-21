@@ -5,7 +5,6 @@ import { submitQuiz } from "./actions";
 import { redirect } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { canAccessContent } from "@/lib/access-control";
 
 interface PageProps {
     params: Promise<{ id: string; quizId: string }>;
@@ -19,10 +18,22 @@ export default async function QuizPage(props: PageProps) {
 
     if (!user) redirect('/login');
 
-    // Check access control (admin or active package)
-    const hasAccess = await canAccessContent(user.id);
+    // Check subscription again
+    const date = new Date();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
 
-    if (!hasAccess) {
+    const { data: subscription } = await supabase
+        .from('subscriptions')
+        .select('*')
+        .eq('user_id', user.id)
+        .eq('subject_id', subjectId)
+        .eq('month', month)
+        .eq('year', year)
+        .eq('is_active', true)
+        .single();
+
+    if (!subscription) {
         redirect(`/subjects/${subjectId}`); // Not subscribed
     }
 

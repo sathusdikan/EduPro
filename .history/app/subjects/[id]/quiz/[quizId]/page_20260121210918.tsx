@@ -5,7 +5,6 @@ import { submitQuiz } from "./actions";
 import { redirect } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { canAccessContent } from "@/lib/access-control";
 
 interface PageProps {
     params: Promise<{ id: string; quizId: string }>;

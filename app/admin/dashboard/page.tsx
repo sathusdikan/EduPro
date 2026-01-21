@@ -211,6 +211,24 @@ export default async function AdminDashboardPage() {
                                 </CardContent>
                             </Card>
                         </Link>
+
+                        {/* Wallet Management */}
+                        <Link href="/admin/wallet" className="group">
+                            <Card className="h-full hover:shadow-xl transition-all duration-300 border-l-4 border-l-emerald-500 hover:scale-[1.02]">
+                                <CardHeader>
+                                    <div className="flex items-center justify-between">
+                                        <div className="p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg group-hover:bg-emerald-200 dark:group-hover:bg-emerald-900/50 transition-colors">
+                                            <DollarSign className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+                                        </div>
+                                        <span className="text-2xl font-bold text-gray-700 dark:text-gray-200">₹{estimatedRevenue.toLocaleString()}</span>
+                                    </div>
+                                    <CardTitle className="mt-4 text-gray-800 dark:text-white">Wallet & Earnings</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-gray-500 dark:text-gray-400">View your earnings, balance, and transaction history.</p>
+                                </CardContent>
+                            </Card>
+                        </Link>
                     </div>
                 </div>
             </div>

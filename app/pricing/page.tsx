@@ -57,9 +57,9 @@ export default async function PricingPage() {
                                     )}
                                 </CardContent>
                                 <CardFooter>
-                                    <Link href="/register" className="w-full">
+                                    <Link href={`/checkout/${pkg.id}`} className="w-full">
                                         <Button className="w-full" size="lg">
-                                            Get Started
+                                            {pkg.price === 0 ? "Start Free Trial" : "Buy Now"}
                                         </Button>
                                     </Link>
                                 </CardFooter>

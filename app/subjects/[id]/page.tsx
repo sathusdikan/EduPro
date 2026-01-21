@@ -5,6 +5,7 @@ import { Lock, PlayCircle, FileQuestion, CheckCircle, AlertCircle } from "lucide
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { canAccessContent, getUserActivePackage } from "@/lib/access-control";
+import VideoList from "@/components/ui/VideoList";
 
 interface PageProps {
     params: Promise<{ id: string }>;
@@ -15,7 +16,7 @@ export default async function SubjectDetailPage(props: PageProps) {
     const id = params.id;
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
-
+    
     if (!user) redirect('/login');
 
     // Fetch subject details
@@ -78,37 +79,19 @@ export default async function SubjectDetailPage(props: PageProps) {
 
             <div className="grid gap-8 md:grid-cols-2">
                 {/* Videos Section */}
-                <div className="space-y-4">
-                    <h2 className="text-2xl font-bold flex items-center gap-2">
-                        <PlayCircle className="h-6 w-6" /> Videos
-                    </h2>
-                    <div className="space-y-4">
-                        {videos?.map((video) => (
-                            <Card key={video.id} className={!hasAccess ? "border-2 border-orange-200 dark:border-orange-800" : ""}>
-                                <CardHeader>
-                                    <CardTitle className="text-lg flex items-center justify-between">
-                                        {video.title}
-                                        {!hasAccess && <Lock className="h-5 w-5 text-orange-500" />}
-                                    </CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    {hasAccess ? (
-                                        <Link href={video.youtube_url || '#'} target="_blank" className="text-blue-600 hover:underline inline-flex items-center gap-2">
-                                            <PlayCircle className="h-4 w-4" />
-                                            Watch Video
-                                        </Link>
-                                    ) : (
-                                        <div className="flex items-center gap-2 text-orange-600">
-                                            <Lock className="h-4 w-4" />
-                                            <span className="text-sm">Upgrade to unlock</span>
-                                        </div>
-                                    )}
-                                </CardContent>
-                            </Card>
-                        ))}
-                        {(!videos || videos.length === 0) && <p className="text-gray-500">No videos available yet.</p>}
-                    </div>
-                </div>
+           {/* Videos Section */}
+<div className="space-y-4">
+  <h2 className="text-2xl font-bold flex items-center gap-2">
+    <PlayCircle className="h-6 w-6" /> Videos
+  </h2>
+
+  {videos && videos.length > 0 ? (
+    <VideoList videos={videos} hasAccess={hasAccess} />
+  ) : (
+    <p className="text-gray-500">No videos available yet.</p>
+  )}
+</div>
+
 
                 {/* Quizzes Section */}
                 <div className="space-y-4">

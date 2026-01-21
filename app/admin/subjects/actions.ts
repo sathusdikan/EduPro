@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 
-export async function createSubject(formData: FormData) {
+export async function createSubject(prevState: any, formData: FormData) {
     const supabase = await createClient()
 
     // Verify admin
@@ -29,7 +29,7 @@ export async function createSubject(formData: FormData) {
     revalidatePath('/dashboard')
 }
 
-export async function deleteSubject(formData: FormData) {
+export async function deleteSubject(prevState: any, formData: FormData) {
     const supabase = await createClient()
     const id = formData.get('id') as string
 

@@ -2,10 +2,11 @@ import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
-import { createSubject, deleteSubject } from "./actions";
 import { Trash2, ArrowLeft } from "lucide-react";
 import Link from 'next/link';
 import { redirect } from "next/navigation";
+import { CreateSubjectForm } from "./create-subject-form";
+import { DeleteSubjectButton } from "./delete-subject-button";
 
 export default async function SubjectsPage() {
     const supabase = await createClient();
@@ -28,36 +29,14 @@ export default async function SubjectsPage() {
                 <h1 className="text-3xl font-bold">Manage Subjects</h1>
             </div>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle>Add New Subject</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <form action={createSubject} className="flex gap-4 items-end">
-                        <div className="grid gap-2 flex-1">
-                            <label htmlFor="name" className="text-sm font-medium">Name</label>
-                            <Input id="name" name="name" placeholder="Mathematics" required />
-                        </div>
-                        <div className="grid gap-2 flex-[2]">
-                            <label htmlFor="description" className="text-sm font-medium">Description</label>
-                            <Input id="description" name="description" placeholder="Algebra, Calculus, and Geometry..." />
-                        </div>
-                        <Button type="submit">Create Subject</Button>
-                    </form>
-                </CardContent>
-            </Card>
+            <CreateSubjectForm />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {subjects?.map((subject) => (
                     <Card key={subject.id}>
                         <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-2">
                             <CardTitle className="text-xl font-bold">{subject.name}</CardTitle>
-                            <form action={deleteSubject}>
-                                <input type="hidden" name="id" value={subject.id} />
-                                <Button variant="destructive" size="icon" className="h-8 w-8">
-                                    <Trash2 className="h-4 w-4" />
-                                </Button>
-                            </form>
+                            <DeleteSubjectButton id={subject.id} />
                         </CardHeader>
                         <CardContent>
                             <p className="text-sm text-gray-500">{subject.description}</p>

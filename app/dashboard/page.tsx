@@ -4,6 +4,8 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { getUserActivePackage } from "@/lib/access-control";
 import { Calendar, Clock, Crown, Lock, BookOpen, Trophy, TrendingUp } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { BillingHistory } from "./billing-history";
 
 export default async function DashboardPage() {
     const supabase = await createClient();
@@ -39,6 +41,16 @@ export default async function DashboardPage() {
 
     // Fetch all subjects
     const { data: subjects } = await supabase.from('subjects').select('*');
+
+    // Fetch billing history
+    const { data: billingHistory } = await supabase
+        .from("user_packages")
+        .select(`
+            *,
+            package:packages(name, price)
+        `)
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false });
 
     // Calculate package status
     const hasActivePackage = !!activePackage;
@@ -178,6 +190,9 @@ export default async function DashboardPage() {
                     </Card>
                 </div>
 
+                {/* Billing History Section */}
+                <BillingHistory history={billingHistory || []} />
+
                 {/* Subjects Section */}
                 <div className="space-y-4">
                     <div className="flex items-center justify-between">
@@ -191,8 +206,8 @@ export default async function DashboardPage() {
                         {subjects?.map((subject) => (
                             <Link key={subject.id} href={`/subjects/${subject.id}`}>
                                 <Card className={`group hover:shadow-2xl transition-all duration-300 cursor-pointer h-full ${!hasActivePackage
-                                        ? 'border-2 border-orange-200 opacity-75 hover:opacity-100'
-                                        : 'hover:scale-105 hover:border-blue-400'
+                                    ? 'border-2 border-orange-200 opacity-75 hover:opacity-100'
+                                    : 'hover:scale-105 hover:border-blue-400'
                                     }`}>
                                     <CardHeader className="relative">
                                         {!hasActivePackage && (

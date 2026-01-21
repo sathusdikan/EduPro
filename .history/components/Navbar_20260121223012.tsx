@@ -10,20 +10,20 @@ export default async function Navbar() {
 
     return (
         <nav className="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50 dark:bg-gray-950/80 dark:border-gray-800">
-            <div className="container mx-auto px-4 h-16 flex items-center justify-between animate-fade-in-up">
-                <Link href="/" className="flex items-center gap-2 font-bold text-xl text-blue-600 dark:text-blue-400 hover-lift">
-                    <GraduationCap className="h-8 w-8 animate-float" />
-                    <span className="gradient-text">EduPro</span>
+            <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+                <Link href="/" className="flex items-center gap-2 font-bold text-xl text-blue-600 dark:text-blue-400">
+                    <GraduationCap className="h-8 w-8" />
+                    <span>EduPro</span>
                 </Link>
 
                 <div className="flex items-center gap-4">
                     {user ? (
                         <>
                             <Link href="/dashboard">
-                                <Button variant="ghost" className="hover-lift">Dashboard</Button>
+                                <Button variant="ghost">Dashboard</Button>
                             </Link>
                             <form action={signout}>
-                                <Button variant="ghost" size="icon" title="Sign out" className="hover-lift">
+                                <Button variant="ghost" size="icon" title="Sign out">
                                     <LogOut className="h-5 w-5" />
                                 </Button>
                             </form>
@@ -31,10 +31,10 @@ export default async function Navbar() {
                     ) : (
                         <>
                             <Link href="/login">
-                                <Button variant="ghost" className="hover-lift">Login</Button>
+                                <Button variant="ghost">Login</Button>
                             </Link>
                             <Link href="/register">
-                                <Button className="hover-lift">Get Started</Button>
+                                <Button>Get Started</Button>
                             </Link>
                         </>
                     )}

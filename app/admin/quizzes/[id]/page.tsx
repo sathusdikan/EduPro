@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { addQuestion, deleteQuestion } from "./actions";
-import { Trash2, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Trash2, CheckCircle2 } from "lucide-react";
 import Link from 'next/link';
 import { redirect } from "next/navigation";
+import { BackButton } from "@/components/ui/back-button";
 
 interface PageProps {
     params: Promise<{ id: string }>;
@@ -30,9 +31,7 @@ export default async function QuizQuestionsPage(props: PageProps) {
     return (
         <div className="container mx-auto p-6 space-y-8">
             <div className="flex items-center gap-4">
-                <Link href="/admin/quizzes">
-                    <Button variant="ghost" size="icon"><ArrowLeft className="h-4 w-4" /></Button>
-                </Link>
+                <BackButton href="/admin/quizzes" size="icon" />
                 <div>
                     <h1 className="text-3xl font-bold">Expect Questions</h1>
                     <p className="text-gray-500">Managing: {quiz.title}</p>

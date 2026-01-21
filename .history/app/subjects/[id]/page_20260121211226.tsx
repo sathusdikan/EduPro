@@ -5,7 +5,6 @@ import { Lock, PlayCircle, FileQuestion, CheckCircle, AlertCircle } from "lucide
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { canAccessContent, getUserActivePackage } from "@/lib/access-control";
-import { BackButton } from "@/components/ui/back-button";
 import VideoList from "@/components/ui/VideoList";
 
 interface PageProps {
@@ -36,12 +35,8 @@ export default async function SubjectDetailPage(props: PageProps) {
     return (
         <div className="container mx-auto p-6 space-y-8">
             <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                    <BackButton href="/dashboard" />
-                    <h1 className="text-4xl font-bold">{subject.name}</h1>
-                </div>
+                <h1 className="text-4xl font-bold">{subject.name}</h1>
                 <p className="text-xl text-gray-500">{subject.description}</p>
-
 
                 {!hasAccess ? (
                     <Card className="bg-gradient-to-r from-orange-50 to-red-50 border-orange-200 dark:from-orange-900/20 dark:to-red-900/20 dark:border-orange-800">

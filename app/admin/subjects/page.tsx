@@ -2,11 +2,12 @@ import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
-import { Trash2, ArrowLeft } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import Link from 'next/link';
 import { redirect } from "next/navigation";
 import { CreateSubjectForm } from "./create-subject-form";
 import { DeleteSubjectButton } from "./delete-subject-button";
+import { BackButton } from "@/components/ui/back-button";
 
 export default async function SubjectsPage() {
     const supabase = await createClient();
@@ -23,9 +24,7 @@ export default async function SubjectsPage() {
     return (
         <div className="container mx-auto p-6 space-y-8">
             <div className="flex items-center gap-4">
-                <Link href="/dashboard">
-                    <Button variant="ghost" size="icon"><ArrowLeft className="h-4 w-4" /></Button>
-                </Link>
+                <BackButton href="/dashboard" size="icon" />
                 <h1 className="text-3xl font-bold">Manage Subjects</h1>
             </div>
 

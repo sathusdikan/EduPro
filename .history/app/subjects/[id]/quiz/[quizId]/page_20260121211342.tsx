@@ -6,7 +6,6 @@ import { redirect } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { canAccessContent } from "@/lib/access-control";
-import { BackButton } from "@/components/ui/back-button";
 
 interface PageProps {
     params: Promise<{ id: string; quizId: string }>;
@@ -35,7 +34,9 @@ export default async function QuizPage(props: PageProps) {
     return (
         <div className="container mx-auto p-6 space-y-8 max-w-3xl">
             <div className="flex items-center gap-4">
-                <BackButton href={`/subjects/${subjectId}`} />
+                <Link href={`/subjects/${subjectId}`}>
+                    <Button variant="ghost" size="icon"><ArrowLeft className="h-4 w-4" /></Button>
+                </Link>
                 <h1 className="text-3xl font-bold">{quiz.title}</h1>
             </div>
 

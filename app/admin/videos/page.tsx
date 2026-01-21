@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { addVideo, deleteVideo } from "./actions";
-import { Trash2, ArrowLeft, Video } from "lucide-react";
+import { Trash2, Video } from "lucide-react";
 import Link from 'next/link';
 import { redirect } from "next/navigation";
+import { BackButton } from "@/components/ui/back-button";
 
 export default async function VideosPage() {
     const supabase = await createClient();
@@ -22,9 +23,7 @@ export default async function VideosPage() {
     return (
         <div className="container mx-auto p-6 space-y-8">
             <div className="flex items-center gap-4">
-                <Link href="/dashboard">
-                    <Button variant="ghost" size="icon"><ArrowLeft className="h-4 w-4" /></Button>
-                </Link>
+                <BackButton href="/dashboard" size="icon" />
                 <h1 className="text-3xl font-bold">Manage Videos</h1>
             </div>
 

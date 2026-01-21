@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { CheckCircle, ArrowLeft, XCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { BackButton } from "@/components/ui/back-button";
 
 interface PageProps {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -64,7 +63,11 @@ export default async function ResultsPage(props: PageProps) {
                 </CardContent>
                 <CardFooter className="flex justify-center">
                     {subjectId && (
-                        <BackButton href={`/subjects/${subjectId}`} label="Back to Subject" variant="outline" size="default" />
+                        <Link href={`/subjects/${subjectId}`}>
+                            <Button variant="outline" className="gap-2">
+                                <ArrowLeft className="h-4 w-4" /> Back to Subject
+                            </Button>
+                        </Link>
                     )}
                 </CardFooter>
             </Card>

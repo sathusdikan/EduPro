@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft, Plus, X } from "lucide-react";
 import Link from "next/link";
+import { BackButton } from "@/components/ui/back-button";
 
 export default function CreatePackagePage() {
     const router = useRouter();
@@ -75,12 +76,7 @@ export default function CreatePackagePage() {
     return (
         <div className="container mx-auto p-6 max-w-3xl">
             <div className="mb-6">
-                <Link href="/admin/packages">
-                    <Button variant="ghost" size="sm">
-                        <ArrowLeft className="h-4 w-4 mr-2" />
-                        Back to Packages
-                    </Button>
-                </Link>
+                <BackButton href="/admin/packages" label="Back to Packages" variant="ghost" size="sm" />
             </div>
 
             <Card>

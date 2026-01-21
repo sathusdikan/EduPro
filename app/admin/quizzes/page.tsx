@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { createQuiz, deleteQuiz } from "./actions";
-import { Trash2, ArrowLeft, FileQuestion, ArrowRight } from "lucide-react";
+import { Trash2, FileQuestion, ArrowRight } from "lucide-react";
 import Link from 'next/link';
 import { redirect } from "next/navigation";
+import { BackButton } from "@/components/ui/back-button";
 
 export default async function QuizzesPage() {
     const supabase = await createClient();
@@ -22,9 +23,7 @@ export default async function QuizzesPage() {
     return (
         <div className="container mx-auto p-6 space-y-8">
             <div className="flex items-center gap-4">
-                <Link href="/dashboard">
-                    <Button variant="ghost" size="icon"><ArrowLeft className="h-4 w-4" /></Button>
-                </Link>
+                <BackButton href="/dashboard" size="icon" />
                 <h1 className="text-3xl font-bold">Manage Quizzes</h1>
             </div>
 

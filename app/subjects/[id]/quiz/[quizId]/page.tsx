@@ -19,6 +19,7 @@ import Link from "next/link";
 import { canAccessContent } from "@/lib/access-control";
 import { BackButton } from "@/components/ui/back-button";
 import { Progress } from "@/components/ui/progress";
+import QuizTimer from "@/components/ui/quiz-timer";
 
 interface PageProps {
   params: Promise<{ id: string; quizId: string }>;
@@ -116,8 +117,13 @@ export default async function QuizPage(props: PageProps) {
           <Progress value={0} className="h-2" />
         </div>
 
+        {/* TIMER */}
+        {quiz.duration_minutes ? (
+          <QuizTimer minutes={quiz.duration_minutes} formId="quizForm" />
+        ) : null}
+
         {/* QUESTIONS */}
-        <form action={submitQuiz} className="space-y-6">
+        <form id="quizForm" action={submitQuiz} className="space-y-6">
           <input type="hidden" name="quizId" value={quizId} />
 
           {questions?.map((q, index) => (

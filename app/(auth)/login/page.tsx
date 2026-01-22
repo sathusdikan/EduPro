@@ -262,25 +262,6 @@ export default function LoginPage() {
                 </div>
             </motion.div>
 
-            <style jsx global>{`
-                @keyframes pulse-slow {
-                    0%, 100% { opacity: 0.5; }
-                    50% { opacity: 0.8; }
-                }
-                
-                @keyframes spin-slow {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                }
-                
-                .animate-pulse-slow {
-                    animation: pulse-slow 4s ease-in-out infinite;
-                }
-                
-                .animate-spin-slow {
-                    animation: spin-slow 3s linear infinite;
-                }
-            `}</style>
         </div>
     )
 }

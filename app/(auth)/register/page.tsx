@@ -212,17 +212,7 @@ export default function RegisterPage() {
                                 transition={{ delay: 0.3 }}
                                 className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4"
                             >
-                                {[
-                                    { icon: BookOpen, text: 'Free Courses' },
-                                    { icon: Shield, text: 'Secure Data' },
-                                    { icon: GraduationCap, text: 'Certificates' },
-                                    { icon: CheckCircle, text: 'Progress Tracking' }
-                                ].map((item, idx) => (
-                                    <div key={idx} className="flex flex-col items-center p-3 rounded-lg bg-gray-50/50 dark:bg-gray-800/30">
-                                        <item.icon className="h-5 w-5 text-blue-500 mb-1" />
-                                        <span className="text-xs text-center text-gray-600 dark:text-gray-400">{item.text}</span>
-                                    </div>
-                                ))}
+                             
                             </motion.div>
 
                             <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
@@ -503,46 +493,9 @@ export default function RegisterPage() {
               
                 </Card>
 
-                {/* Additional info */}
-                <div className="mt-6 text-center">
-                    <div className="inline-flex flex-col sm:flex-row items-center gap-4 px-6 py-4 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-800/50">
-                        <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                            <span className="text-sm text-gray-600 dark:text-gray-400">Join 10,000+ students</span>
-                        </div>
-                        <div className="hidden sm:block h-4 w-px bg-gray-300 dark:bg-gray-700"></div>
-                        <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
-                            <span className="text-sm text-gray-600 dark:text-gray-400">Start with free courses</span>
-                        </div>
-                        <div className="hidden sm:block h-4 w-px bg-gray-300 dark:bg-gray-700"></div>
-                        <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></div>
-                            <span className="text-sm text-gray-600 dark:text-gray-400">Personalized learning path</span>
-                        </div>
-                    </div>
-                </div>
+           
             </motion.div>
 
-            <style jsx global>{`
-                @keyframes pulse-slow {
-                    0%, 100% { opacity: 0.3; }
-                    50% { opacity: 0.6; }
-                }
-                
-                @keyframes spin-slow {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                }
-                
-                .animate-pulse-slow {
-                    animation: pulse-slow 3s ease-in-out infinite;
-                }
-                
-                .animate-spin-slow {
-                    animation: spin-slow 8s linear infinite;
-                }
-            `}</style>
         </div>
     )
 }

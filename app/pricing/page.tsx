@@ -242,44 +242,7 @@ export default async function PricingPage() {
           </div>
         )}
 
-        {/* CTA Section */}
-        <div className="mt-20 text-center animate-in fade-in duration-700 slide-in-from-bottom-8">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border border-blue-100 dark:border-blue-800/50 mb-6">
-            <Shield className="h-5 w-5 text-blue-500" />
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              30-day money-back guarantee • Cancel anytime
-            </span>
-          </div>
-
-          <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
-            Not sure which package to choose?
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-            Our experts can help you pick the perfect package based on your learning goals and budget.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 hover:border-blue-400 dark:hover:border-blue-500 hover:scale-105 transition-all"
-              >
-                Talk to an Expert
-              </Button>
-            </Link>
-            
-            <Link href="/login">
-              <Button 
-                size="lg"
-                className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 hover:scale-105 transition-all shadow-lg shadow-green-500/25"
-              >
-                <Users className="h-5 w-5 mr-2" />
-                Login to Your Account
-              </Button>
-            </Link>
-          </div>
-        </div>
+    
 
         {/* FAQ Preview */}
         <div className="mt-16 max-w-3xl mx-auto animate-in fade-in duration-700">

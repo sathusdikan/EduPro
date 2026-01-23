@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation'
 
 type ActionState = { error: string }
 
-export async function createSubject(prevState: ActionState, formData: FormData) {
+export async function createSubject(prevState: ActionState | undefined, formData: FormData) {
     const supabase = await createClient()
 
     // Verify admin

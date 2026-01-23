@@ -51,6 +51,22 @@ export default async function QuizzesPage() {
                             <label htmlFor="title" className="text-sm font-medium">Quiz Title</label>
                             <Input id="title" name="title" placeholder="Algebra Basics Test 1" required />
                         </div>
+                        <div className="grid gap-2 w-full md:w-1/4">
+                            <label htmlFor="duration" className="text-sm font-medium">Duration</label>
+                            <select
+                                id="duration"
+                                name="duration"
+                                className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                                defaultValue="0"
+                            >
+                                <option value="0">No limit</option>
+                                <option value="5">5 minutes</option>
+                                <option value="10">10 minutes</option>
+                                <option value="15">15 minutes</option>
+                                <option value="20">20 minutes</option>
+                                <option value="30">30 minutes</option>
+                            </select>
+                        </div>
                         <Button type="submit">Create Quiz</Button>
                     </form>
                 </CardContent>
@@ -64,7 +80,7 @@ export default async function QuizzesPage() {
                                 <FileQuestion className="h-8 w-8 text-green-600" />
                                 <div>
                                     <h3 className="font-bold">{quiz.title}</h3>
-                                    <p className="text-sm text-gray-500">{(quiz.subjects as any)?.name}</p>
+                                    <p className="text-sm text-gray-500">{(quiz.subjects as { name?: string })?.name}</p>
                                     <Link href={`/admin/quizzes/${quiz.id}`} className="text-blue-600 text-sm hover:underline flex items-center gap-1 mt-1">
                                         Manage Questions <ArrowRight className="h-3 w-3" />
                                     </Link>

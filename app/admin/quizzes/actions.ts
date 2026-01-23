@@ -9,11 +9,15 @@ export async function createQuiz(formData: FormData) {
 
     const subjectId = formData.get('subjectId') as string
     const title = formData.get('title') as string
+    const durationStr = (formData.get('duration') as string) || '0'
+    const duration = parseInt(durationStr, 10)
 
-    const { error } = await supabase.from('quizzes').insert({
-        subject_id: subjectId,
-        title
-    })
+    const payload: { subject_id: string; title: string; duration_minutes?: number } = { subject_id: subjectId, title }
+    if (!Number.isNaN(duration) && duration > 0) {
+        payload['duration_minutes'] = duration
+    }
+
+    const { error } = await supabase.from('quizzes').insert(payload)
 
     if (error) {
         console.error('Error creating quiz', error)

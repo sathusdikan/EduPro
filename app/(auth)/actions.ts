@@ -106,3 +106,55 @@ export async function signout() {
     revalidatePath('/', 'layout')
     redirect('/login')
 }
+
+export async function requestPasswordReset(formData: FormData) {
+    const supabase = await createClient()
+    const email = (formData.get('email') as string || '').trim()
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+        return { error: 'Please enter a valid email address' }
+    }
+
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    const redirectTo = `${siteUrl}/reset-password`
+
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo,
+    })
+
+    if (error) {
+        return { error: error.message }
+    }
+
+    return { success: 'If an account exists for this email, a reset link has been sent.' }
+}
+
+export async function resetPassword(formData: FormData) {
+    const supabase = await createClient()
+    const password = (formData.get('password') as string || '').trim()
+    const confirmPassword = (formData.get('confirmPassword') as string || '').trim()
+
+    if (password !== confirmPassword) {
+        return { error: 'Passwords do not match' }
+    }
+    if (password.length < 8) {
+        return { error: 'Password must be at least 8 characters long' }
+    }
+    const hasUpper = /[A-Z]/.test(password)
+    const hasLower = /[a-z]/.test(password)
+    const hasNumber = /[0-9]/.test(password)
+    const hasSpecial = /[^A-Za-z0-9]/.test(password)
+    const strength = [hasUpper, hasLower, hasNumber, hasSpecial].filter(Boolean).length
+    if (strength < 2) {
+        return { error: 'Use a stronger password (mix of cases, numbers, symbols)' }
+    }
+
+    const { error } = await supabase.auth.updateUser({ password })
+    if (error) {
+        return { error: error.message }
+    }
+
+    revalidatePath('/', 'layout')
+    return { success: 'Password updated successfully' }
+}

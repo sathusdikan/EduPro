@@ -7,10 +7,12 @@
    children,
    className,
    once = true,
+   style,
  }: {
    children: React.ReactNode;
    className?: string;
    once?: boolean;
+   style?: React.CSSProperties;
  }) {
    const ref = useRef<HTMLDivElement | null>(null);
  
@@ -37,7 +39,7 @@
    }, [once]);
  
    return (
-     <div ref={ref} className={cn("reveal", className)}>
+     <div ref={ref} className={cn("reveal", className)} style={style}>
        {children}
      </div>
    );

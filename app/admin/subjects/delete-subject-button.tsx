@@ -10,7 +10,10 @@ const initialState = {
 }
 
 export function DeleteSubjectButton({ id }: { id: string }) {
-    const [state, action, isPending] = useActionState(deleteSubject, initialState)
+    const [state, action, isPending] = useActionState(
+        (prevState: { error: string } | undefined, formData: FormData) => deleteSubject(prevState as { error: string }, formData),
+        initialState
+    )
 
     return (
         <form action={action}>

@@ -437,7 +437,7 @@ export default function RegisterPage() {
       href="/terms"
       className="font-medium text-blue-600 hover:underline"
     >
-      Terms of Service
+      Terms 
     </Link>{' '}
     and{' '}
     <Link

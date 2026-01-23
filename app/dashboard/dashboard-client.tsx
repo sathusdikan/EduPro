@@ -422,7 +422,8 @@ export default function DashboardClient({
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-2xl">
                 <BarChart className="h-8 w-8 text-blue-600" />
-                Quick Stats
+               <h1 className="text-gray-900 dark:text-white">Quick Stats</h1>
+
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -467,7 +468,9 @@ export default function DashboardClient({
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-2xl">
                 <Brain className="h-8 w-8 text-indigo-600" />
-                Available Subjects
+               
+                <h1 className="text-gray-900 dark:text-white"> Available Subjects</h1>
+
               </CardTitle>
             </CardHeader>
             <CardContent>

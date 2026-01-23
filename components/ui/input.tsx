@@ -76,7 +76,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                             "placeholder:text-gray-400 dark:placeholder:text-gray-500",
                             "focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/30",
                             "disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-100 dark:disabled:bg-gray-800",
-                            variantClasses[variant],
+                           
                             sizeClasses[size],
                             icon && iconPosition === "left" && "pl-10",
                             (icon && iconPosition === "right" || showPasswordToggle || loading) && "pr-10",

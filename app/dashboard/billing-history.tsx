@@ -29,17 +29,17 @@ export function BillingHistory({ history }: BillingHistoryProps) {
         >
           {isOpen ? (
             <>
-              <h2 className="text-2xl font-bold flex items-center gap-2">
+              <h3 className="text-lg font-bold flex items-center gap-2">
                 <Receipt className="h-7 w-7 text-green-600" />
                 Billing History
-              </h2>
+              </h3>
             </>
           ) : (
             <>
-              <h2 className="text-2xl font-bold flex items-center gap-2">
+              <h3 className="text-lg font-bold flex items-center gap-2">
                 <Receipt className="h-7 w-7 text-green-600" />
                 Billing History
-              </h2>
+              </h3>
             </>
           )}
         </Button>

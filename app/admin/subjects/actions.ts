@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 
-type ActionState = { error?: string }
+type ActionState = { error: string }
 
 export async function createSubject(prevState: ActionState, formData: FormData) {
     const supabase = await createClient()
@@ -29,9 +29,10 @@ export async function createSubject(prevState: ActionState, formData: FormData) 
 
     revalidatePath('/admin/subjects')
     revalidatePath('/dashboard')
+    return { error: "" }
 }
-
 export async function deleteSubject(prevState: ActionState, formData: FormData) {
+
     const supabase = await createClient()
     const id = formData.get('id') as string
 

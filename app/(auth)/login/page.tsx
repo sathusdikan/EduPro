@@ -158,7 +158,16 @@ export default function LoginPage() {
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="pl-10 h-12 border-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                                       className="
+  pl-10 h-12 border-2 rounded-md
+  bg-white text-gray-900 border-gray-300
+  focus:border-blue-500 focus:ring-1 focus:ring-blue-500
+  transition-all
+
+  dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700
+  dark:focus:border-blue-400 dark:focus:ring-blue-400
+"
+
                                     />
                                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                                 </div>
@@ -182,7 +191,16 @@ export default function LoginPage() {
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="pl-10 pr-10 h-12 border-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                                        className="
+  pl-10 h-12 border-2 rounded-md
+  bg-white text-gray-900 border-gray-300
+  focus:border-blue-500 focus:ring-1 focus:ring-blue-500
+  transition-all
+
+  dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700
+  dark:focus:border-blue-400 dark:focus:ring-blue-400
+"
+
                                         placeholder="Enter your password"
                                     />
                                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />

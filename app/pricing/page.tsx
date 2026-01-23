@@ -96,13 +96,15 @@ export default async function PricingPage() {
                     <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
                   )}
 
-                  <Card 
-                    className={`relative h-full border-2 transition-all duration-500 hover:scale-[1.02] overflow-hidden 
-                      ${isPopular 
-                        ? 'border-yellow-400/50 dark:border-yellow-500/50 shadow-2xl shadow-yellow-500/10 dark:shadow-yellow-500/20' 
-                        : 'border-gray-200 dark:border-gray-800 hover:border-blue-400 dark:hover:border-blue-600'
-                      }`}
-                  >
+                <Card
+  className={`relative h-full overflow-hidden border-2 transition-all duration-500 hover:scale-[1.02]
+    bg-white dark:bg-gray-900
+    ${isPopular
+      ? 'border-yellow-400/50 dark:border-yellow-500/50 shadow-2xl shadow-yellow-500/10 dark:shadow-yellow-500/20'
+      : 'border-gray-200 dark:border-gray-800 hover:border-blue-400 dark:hover:border-blue-600'
+    }`}
+>
+
                     {/* Animated background */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
